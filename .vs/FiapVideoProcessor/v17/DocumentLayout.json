@@ -1,0 +1,123 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Pos\\FiapVideoProcessor\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{020991B8-0D6A-4112-B9A5-10AAFD67D50A}|FiapVideoProcessorWorker\\FiapVideoProcessorWorker\\FiapVideoProcessorWorker.csproj|c:\\pos\\fiapvideoprocessor\\fiapvideoprocessorworker\\fiapvideoprocessorworker\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{020991B8-0D6A-4112-B9A5-10AAFD67D50A}|FiapVideoProcessorWorker\\FiapVideoProcessorWorker\\FiapVideoProcessorWorker.csproj|solutionrelative:fiapvideoprocessorworker\\fiapvideoprocessorworker\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9F5898E-FBD0-40E1-9E4B-653D4C949B0C}|FiapVideoProcessor.csproj|c:\\pos\\fiapvideoprocessor\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C9F5898E-FBD0-40E1-9E4B-653D4C949B0C}|FiapVideoProcessor.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9F5898E-FBD0-40E1-9E4B-653D4C949B0C}|FiapVideoProcessor.csproj|c:\\pos\\fiapvideoprocessor\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C9F5898E-FBD0-40E1-9E4B-653D4C949B0C}|FiapVideoProcessor.csproj|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{020991B8-0D6A-4112-B9A5-10AAFD67D50A}|FiapVideoProcessorWorker\\FiapVideoProcessorWorker\\FiapVideoProcessorWorker.csproj|c:\\pos\\fiapvideoprocessor\\fiapvideoprocessorworker\\fiapvideoprocessorworker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{020991B8-0D6A-4112-B9A5-10AAFD67D50A}|FiapVideoProcessorWorker\\FiapVideoProcessorWorker\\FiapVideoProcessorWorker.csproj|solutionrelative:fiapvideoprocessorworker\\fiapvideoprocessorworker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{809f6ff3-8092-454a-8003-6d4091f9b5bb}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{65ddf8c3-8f89-4077-a6c6-dbb8853aab13}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:17:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:18:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{65ddf8c3-8f89-4077-a6c6-dbb8853aab13}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:4:0:{65ddf8c3-8f89-4077-a6c6-dbb8853aab13}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Pos\\FiapVideoProcessor\\Dockerfile",
+              "RelativeDocumentMoniker": "Dockerfile",
+              "ToolTip": "C:\\Pos\\FiapVideoProcessor\\Dockerfile",
+              "RelativeToolTip": "Dockerfile",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-23T23:09:17.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Pos\\FiapVideoProcessor\\FiapVideoProcessorWorker\\FiapVideoProcessorWorker\\Dockerfile",
+              "RelativeDocumentMoniker": "FiapVideoProcessorWorker\\FiapVideoProcessorWorker\\Dockerfile",
+              "ToolTip": "C:\\Pos\\FiapVideoProcessor\\FiapVideoProcessorWorker\\FiapVideoProcessorWorker\\Dockerfile",
+              "RelativeToolTip": "FiapVideoProcessorWorker\\FiapVideoProcessorWorker\\Dockerfile",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-23T17:28:09.398Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "docker-compose.yml",
+              "DocumentMoniker": "C:\\Pos\\FiapVideoProcessor\\docker-compose.yml",
+              "RelativeDocumentMoniker": "docker-compose.yml",
+              "ToolTip": "C:\\Pos\\FiapVideoProcessor\\docker-compose.yml",
+              "RelativeToolTip": "docker-compose.yml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEQAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-04-23T15:20:41.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Pos\\FiapVideoProcessor\\FiapVideoProcessorWorker\\FiapVideoProcessorWorker\\Program.cs",
+              "RelativeDocumentMoniker": "FiapVideoProcessorWorker\\FiapVideoProcessorWorker\\Program.cs",
+              "ToolTip": "C:\\Pos\\FiapVideoProcessor\\FiapVideoProcessorWorker\\FiapVideoProcessorWorker\\Program.cs",
+              "RelativeToolTip": "FiapVideoProcessorWorker\\FiapVideoProcessorWorker\\Program.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAQwCwAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T14:12:19.25Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: video-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: videodb
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  localstack:
+    image: localstack/localstack:latest
+    container_name: video-localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=sqs
+      - DEBUG=1
+      - DEFAULT_REGION=us-east-1
+    volumes:
+      - "./.localstack:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: video-api
+    ports:
+      - "5000:8080"
+    depends_on:
+      - postgres
+      - localstack
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Postgres=Host=postgres;Database=videodb;Username=postgres;Password=postgres
+      - Jwt__Key=supermegasecretkey_that_is_very_secure_123
+      - AWS__ServiceURL=http://localstack:4566
+      - AWS__AccessKey=localstack
+      - AWS__SecretKey=localstack
+
+  worker:
+    build:
+      context: . 
+      dockerfile: FiapVideoProcessorWorker/FiapVideoProcessorWorker/Dockerfile
+    container_name: video-worker
+    depends_on:
+      postgres:
+        condition: service_healthy
+      localstack:
+        condition: service_started
+    environment:
+      - ConnectionStrings__Postgres=Host=postgres;Database=videodb;Username=postgres;Password=postgres
+      - AWS__ServiceURL=http://localstack:4566
+      - AWS__AccessKey=localstack
+      - AWS__SecretKey=localstack
+
+volumes:
+  pgdata:
