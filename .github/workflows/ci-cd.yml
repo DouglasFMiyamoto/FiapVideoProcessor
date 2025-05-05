@@ -26,13 +26,13 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore FiapServiceVideoProcessor.WebApi/FiapServiceVideoProcessor.WebApi.csproj
+        run: dotnet restore FiapServiceVideoProcessor.csproj
 
       - name: Build API
-        run: dotnet build FiapServiceVideoProcessor.WebApi/FiapServiceVideoProcessor.WebApi.csproj --configuration Release --no-restore
+        run: dotnet build FiapServiceVideoProcessor.csproj --configuration Release --no-restore
 
       - name: Publish API
-        run: dotnet publish FiapServiceVideoProcessor.WebApi/FiapServiceVideoProcessor.WebApi.csproj --configuration Release --output ./publish --no-restore
+        run: dotnet publish FiapServiceVideoProcessor.csproj --configuration Release --output ./publish --no-restore
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
