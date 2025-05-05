@@ -1,51 +1,48 @@
-name: CI/CD - Build and Push Docker Images
+name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 env:
-  DOCKERHUB_USERNAME: dmiyamoto86
-  IMAGE_API: fiapservicevideoprocessor-api
-  IMAGE_WORKER: fiapservicevideoprocessor-worker
+  DOCKER_HUB_USERNAME: dmiyamoto86
+  IMAGE_NAME: fiapvideoprocessor-api
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up .NET SDK
+      - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
 
-      - name: Restore API
+      - name: Restore dependencies
         run: dotnet restore FiapServiceVideoProcessor.WebApi/FiapServiceVideoProcessor.WebApi.csproj
 
       - name: Build API
         run: dotnet build FiapServiceVideoProcessor.WebApi/FiapServiceVideoProcessor.WebApi.csproj --configuration Release --no-restore
 
-      - name: Restore Worker
-        run: dotnet restore FiapServiceVideoProcessor.Worker/FiapVideoProcessorWorker.csproj
-
-      - name: Build Worker
-        run: dotnet build FiapServiceVideoProcessor.Worker/FiapVideoProcessorWorker.csproj --configuration Release --no-restore
+      - name: Publish API
+        run: dotnet publish FiapServiceVideoProcessor.WebApi/FiapServiceVideoProcessor.WebApi.csproj --configuration Release --output ./publish --no-restore
 
       - name: Log in to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
-          username: ${{ env.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build & push API Docker image
+      - name: Build Docker image
         run: |
-          docker build -t $DOCKERHUB_USERNAME/$IMAGE_API:latest -f FiapServiceVideoProcessor.WebApi/Dockerfile .
-          docker push $DOCKERHUB_USERNAME/$IMAGE_API:latest
+          docker build -f FiapServiceVideoProcessor.WebApi/Dockerfile -t $DOCKER_HUB_USERNAME/$IMAGE_NAME:latest .
 
-      - name: Build & push Worker Docker image
-        run: |
-          docker build -t $DOCKERHUB_USERNAME/$IMAGE_WORKER:latest -f FiapServiceVideoProcessor.Worker/Dockerfile .
-          docker push $DOCKERHUB_USERNAME/$IMAGE_WORKER:latest
+      - name: Push Docker image
+        run: docker push $DOCKER_HUB_USERNAME/$IMAGE_NAME:latest
