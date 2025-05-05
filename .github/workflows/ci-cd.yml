@@ -19,9 +19,6 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
-    - name: Clean previous build artifacts
-      run: dotnet clean
-
     - name: Restore API dependencies
       run: dotnet restore FiapVideoProcessor.csproj
 
