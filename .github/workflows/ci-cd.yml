@@ -1,48 +1,43 @@
-name: CI/CD Pipeline
+name: CI/CD - Build and Publish
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - main
-
-env:
-  DOCKER_HUB_USERNAME: dmiyamoto86
-  IMAGE_NAME: fiapvideoprocessor-api
+    branches: [ "main" ]
 
 jobs:
-  build-and-push:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout source code
+      uses: actions/checkout@v3
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '8.0.x'
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
 
-      - name: Restore dependencies
-        run: dotnet restore FiapVideoProcessor.csproj
+    - name: Clean previous build artifacts
+      run: dotnet clean
 
-      - name: Build API
-        run: dotnet build FiapVideoProcessor.csproj --configuration Release --no-restore
+    - name: Restore API dependencies
+      run: dotnet restore FiapServiceVideoProcessor.WebApi/FiapServiceVideoProcessor.WebApi.csproj
 
-      - name: Publish API
-        run: dotnet publish FiapVideoProcessor.csproj --configuration Release --output ./publish --no-restore
+    - name: Build API
+      run: dotnet build FiapServiceVideoProcessor.WebApi/FiapServiceVideoProcessor.WebApi.csproj --configuration Release --no-restore
 
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Restore Worker dependencies
+      run: dotnet restore FiapServiceVideoProcessor.Worker/FiapVideoProcessorWorker.csproj
 
-      - name: Build Docker image
-        run: |
-          docker build -f Dockerfile -t $DOCKER_HUB_USERNAME/$IMAGE_NAME:latest .
+    - name: Build Worker
+      run: dotnet build FiapServiceVideoProcessor.Worker/FiapVideoProcessorWorker.csproj --configuration Release --no-restore
 
-      - name: Push Docker image
-        run: docker push $DOCKER_HUB_USERNAME/$IMAGE_NAME:latest
+    - name: Publish Docker images
+      run: |
+        docker build -t dmiyamoto86/fiap-api -f FiapServiceVideoProcessor.WebApi/Dockerfile .
+        docker build -t dmiyamoto86/fiap-worker -f FiapServiceVideoProcessor.Worker/Dockerfile .
+        echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+        docker push dmiyamoto86/fiap-api
+        docker push dmiyamoto86/fiap-worker
